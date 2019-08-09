@@ -1,7 +1,7 @@
 CentOS 7 supports three class of Host Names:
 
 **_Static_** – The static host name is traditional host which can be chosen by the user and is stored in _/etc/hostname_ file.
-**_Transient_** – The transient host name is maintained by kernel and can be changed by DHCP and mDNS.
+**_Transient_** – The transient host name is maintained by kernel and can be changed by DHCP and mDNS.<br>
 **_Pretty_** – It is a free form UTF -8 host name for the presentation to the user.
 
 HostName can be,
@@ -17,12 +17,12 @@ localhost.localdomain
 ## 1. nmtui tool: 
 NetworkManaget tool is used to set the static host name in /etc/hostname file.
 <p align="center">
-<img src="https://user-images.githubusercontent.com/13705439/62769517-58a35900-bac3-11e9-9e9e-c4331b175286.png">
+<img src="https://user-images.githubusercontent.com/13705439/62769517-58a35900-bac3-11e9-9e9e-c4331b175286.png"><br>
 nmtui -Select Set HostName
 </p>
 Set the host name.
 <p align="center">
-<img src="https://user-images.githubusercontent.com/13705439/62769522-5b05b300-bac3-11e9-9d12-48b6e81df22b.png">
+<img src="https://user-images.githubusercontent.com/13705439/62769522-5b05b300-bac3-11e9-9d12-48b6e81df22b.png"><br>
 nmtui – Change HostName 2
 </p>
 

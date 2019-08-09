@@ -16,28 +16,33 @@ localhost.localdomain
 ```
 ## 1. nmtui tool: 
 NetworkManaget tool is used to set the static host name in /etc/hostname file.
-
-![nmtui-img1 align="center"](https://user-images.githubusercontent.com/13705439/62769517-58a35900-bac3-11e9-9e9e-c4331b175286.png) 
-
+<p align="center">
+<img src="https://user-images.githubusercontent.com/13705439/62769517-58a35900-bac3-11e9-9e9e-c4331b175286.png">
 nmtui -Select Set HostName
+</p>
 Set the host name.
 <p align="center">
-![nmtui-img2](https://user-images.githubusercontent.com/13705439/62769522-5b05b300-bac3-11e9-9d12-48b6e81df22b.png) 
-</p>
+<img src="https://user-images.githubusercontent.com/13705439/62769522-5b05b300-bac3-11e9-9d12-48b6e81df22b.png">
 nmtui – Change HostName 2
+</p>
+
 restart the hostnamed to force the hostnamectl to notice the change in static host name.
+```
 [root@localhost ~]# systemctl restart systemd-hostnamed
+```
 You can verify the change in host name.
-[root@server ~]# hostname
+```[root@server ~]# hostname
 server.itzgeek.com
 [root@server ~]# cat /etc/hostname
 server.itzgeek.com
 [root@server ~]# cat /etc/sysconfig/network
-# Created by anaconda
+#Created by anaconda
 HOSTNAME=server.itzgeek.com
-2. hostnamectl: 
+```
+## 2. hostnamectl: 
 hostnamectl is used to change the host name, with this tool we can change all the three class of host name; here we look only static host name.
 Check the current host name.
+```
 [root@server ~]# hostnamectl status
 Static hostname: server.itzgeek.com
 Icon name: computer-vm
@@ -49,9 +54,13 @@ Operating System: CentOS Linux 7 (Core)
 CPE OS Name: cpe:/o:centos:centos:7
 Kernel: Linux 3.10.0-123.el7.x86_64
 Architecture: x86_64
+```
 Set the hostname.
+```
 [root@server ~]# hostnamectl set-hostname client.itzgeek.com
+```
 Check the host name again (Close the session and open new session using putty or console)
+```
 [root@client ~]# hostnamectl status
 Static hostname: client.itzgeek.com
 Icon name: computer-vm
@@ -63,16 +72,23 @@ Operating System: CentOS Linux 7 (Core)
 CPE OS Name: cpe:/o:centos:centos:7
 Kernel: Linux 3.10.0-123.el7.x86_64
 Architecture: x86_64
+```
 If you use this command, you do not require to notify the change in host name. Close the current session and re launch the terminal.
-3. nmcli tool: 
+## 3. nmcli tool: 
 It can be used to query and setup the static host name in /etc/hostname file.
 Check the hostname.
+```
 [root@client ~]# nmcli general hostname
 client.itzgeek.com
+```
 Change the host name.
+```
 [root@client ~]# nmcli general hostname server.itzgeek.com
+```
 restart the hostnamed to force the hostnamectl to notice the change in static host name.
+```
 [root@client ~]# systemctl restart systemd-hostnamed
-4. Edit /etc/hostname
+```
+## 4. Edit /etc/hostname
 This is the simple, but requires a reboot of server to take an effect.
 Note: Use the hostnamectl to change the host name, which fair better than other commands and does not require to update the kernel about the change in host name.
